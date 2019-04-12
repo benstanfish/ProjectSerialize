@@ -28,34 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ButtonSerialize = new System.Windows.Forms.Button();
-            this.ButtonOpenFile = new System.Windows.Forms.Button();
+            this.ButtonRead = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ButtonClose = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ButtonWrite = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // ButtonSerialize
+            // ButtonRead
             // 
-            this.ButtonSerialize.Location = new System.Drawing.Point(462, 41);
-            this.ButtonSerialize.Name = "ButtonSerialize";
-            this.ButtonSerialize.Size = new System.Drawing.Size(75, 23);
-            this.ButtonSerialize.TabIndex = 0;
-            this.ButtonSerialize.Text = "Serialize";
-            this.ButtonSerialize.UseVisualStyleBackColor = true;
-            // 
-            // ButtonOpenFile
-            // 
-            this.ButtonOpenFile.Location = new System.Drawing.Point(462, 12);
-            this.ButtonOpenFile.Name = "ButtonOpenFile";
-            this.ButtonOpenFile.Size = new System.Drawing.Size(75, 23);
-            this.ButtonOpenFile.TabIndex = 1;
-            this.ButtonOpenFile.Text = "Open File";
-            this.ButtonOpenFile.UseVisualStyleBackColor = true;
+            this.ButtonRead.Location = new System.Drawing.Point(464, 42);
+            this.ButtonRead.Name = "ButtonRead";
+            this.ButtonRead.Size = new System.Drawing.Size(75, 23);
+            this.ButtonRead.TabIndex = 1;
+            this.ButtonRead.Text = "Read";
+            this.ButtonRead.UseVisualStyleBackColor = true;
+            this.ButtonRead.Click += new System.EventHandler(this.ButtonRead_Click);
             // 
             // dataGridView1
             // 
@@ -102,15 +94,25 @@
             this.Age.HeaderText = "Age";
             this.Age.Name = "Age";
             // 
+            // ButtonWrite
+            // 
+            this.ButtonWrite.Location = new System.Drawing.Point(463, 13);
+            this.ButtonWrite.Name = "ButtonWrite";
+            this.ButtonWrite.Size = new System.Drawing.Size(75, 23);
+            this.ButtonWrite.TabIndex = 4;
+            this.ButtonWrite.Text = "Write";
+            this.ButtonWrite.UseVisualStyleBackColor = true;
+            this.ButtonWrite.Click += new System.EventHandler(this.ButtonWrite_Click);
+            // 
             // FormSerialize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 450);
+            this.Controls.Add(this.ButtonWrite);
             this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.ButtonOpenFile);
-            this.Controls.Add(this.ButtonSerialize);
+            this.Controls.Add(this.ButtonRead);
             this.Name = "FormSerialize";
             this.ShowIcon = false;
             this.Text = "Project Serialize";
@@ -120,15 +122,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button ButtonSerialize;
-        private System.Windows.Forms.Button ButtonOpenFile;
+        private System.Windows.Forms.Button ButtonRead;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
+        private System.Windows.Forms.Button ButtonWrite;
     }
 }
 
