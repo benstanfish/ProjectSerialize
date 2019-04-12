@@ -14,18 +14,6 @@ namespace ProjectSerialize
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-
-
-
-
-
-
-
-
-
-
-
-
         [STAThread]
 
         static void Main()
@@ -33,11 +21,8 @@ namespace ProjectSerialize
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormSerialize());
-
         }
 
-
-        
     }
 
 }
