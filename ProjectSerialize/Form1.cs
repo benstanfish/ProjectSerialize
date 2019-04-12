@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjectSerialize
 {
-    public partial class Form1 : Form
+    public partial class FormSerialize : Form
     {
-        public Form1()
+        public FormSerialize()
         {
             InitializeComponent();
         }
