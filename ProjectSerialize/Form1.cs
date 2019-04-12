@@ -56,7 +56,6 @@ namespace ProjectSerialize
                 writer.WriteLine();
             }
             writer.Close();
-            MessageBox.Show("Data export complete.");
         }
 
         
@@ -73,19 +72,6 @@ namespace ProjectSerialize
                 fd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                 fd.FilterIndex = 2;
                 fd.RestoreDirectory = true;
-
-                /*
-                if (fd.ShowDialog() == DialogResult.OK)
-                {
-                    filePath = fd.FileName;
-                    var fileStream = fd.OpenFile();
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        fileContent = reader.ReadToEnd();
-                    }
-                    MessageBox.Show("File read without errors.");
-                }
-                */
 
                 if (fd.ShowDialog() == DialogResult.OK)
                 {
@@ -109,14 +95,13 @@ namespace ProjectSerialize
                         row["Age"] = curr[3];
                         dataTable.Rows.Add(row);
                     }
-
+                    
                     this.dataGridView1.Columns.Clear();
                     this.dataGridView1.DataSource = dataTable;
-                    MessageBox.Show("File read without errors.");
                 }
-
-            }
                 
+            }
+            
         }
     }
 }
