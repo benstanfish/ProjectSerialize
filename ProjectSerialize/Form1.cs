@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.Serialization;
 
 namespace ProjectSerialize
 {
@@ -58,8 +59,6 @@ namespace ProjectSerialize
             writer.Close();
         }
 
-        
-
         private void ButtonRead_Click(object sender, EventArgs e)
         {
             var fileContent = string.Empty;
@@ -102,6 +101,39 @@ namespace ProjectSerialize
                 
             }
             
+        }
+
+
+
+        private void ButtonMakePersons_Click(object sender, EventArgs e)
+        {
+            var persons = new List<Person>();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+
+                Person person = new Person(1,"Ben","Fisher",8);
+                persons.Add(person);
+            }
+
+
+        }
+
+        [Serializable]
+        public class Person
+        {
+            int ID { get; set; }
+            string FirstName { get; set; }
+            string LastName { get; set; }
+            int Age { get; set; }
+
+            public Person(int id, string firstName, string lastName, int age)
+            {
+                ID = id;
+                FirstName = firstName;
+                LastName = lastName;
+                Age = age;
+            }
+
         }
     }
 }
