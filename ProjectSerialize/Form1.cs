@@ -41,7 +41,7 @@ namespace ProjectSerialize
 
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                for (int j = 0; j < dataGridView1.Columns.Count-1; j++)
+                for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
                     if (j == dataGridView1.Columns.Count - 1)
                     {
@@ -89,8 +89,9 @@ namespace ProjectSerialize
 
                 if (fd.ShowDialog() == DialogResult.OK)
                 {
-                    var dataTable = new DataTable();
-                    dataTable.Columns.Add(new DataColumn("id", typeof(int)));
+                    DataTable dataTable = new DataTable();
+                    DataColumn column = new DataColumn();
+                    dataTable.Columns.Add(new DataColumn("ID", typeof(int)));
                     dataTable.Columns.Add(new DataColumn("FirstName", typeof(string)));
                     dataTable.Columns.Add(new DataColumn("LastName", typeof(string)));
                     dataTable.Columns.Add(new DataColumn("Age", typeof(string)));
@@ -100,10 +101,17 @@ namespace ProjectSerialize
                     var lines = File.ReadAllLines(filePath);
                     foreach (string line in lines)
                     {
-                        dataTable.Rows.Add(line.Split('\t'));
+                        string[] curr = line.Split('\t');
+                        var row = dataTable.NewRow();
+                        row["id"] = curr[0];
+                        row["FirstName"] = curr[1];
+                        row["LastName"] = curr[2];
+                        row["Age"] = curr[3];
+                        dataTable.Rows.Add(row);
                     }
 
-                    dataGridView1.DataSource = dataTable;
+                    this.dataGridView1.Columns.Clear();
+                    this.dataGridView1.DataSource = dataTable;
                     MessageBox.Show("File read without errors.");
                 }
 
