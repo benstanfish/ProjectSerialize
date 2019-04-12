@@ -17,6 +17,22 @@ namespace ProjectSerialize
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormSerialize());
+
+
+
+
+
+
+
+
+
+
+
         }
+
+
+
+
+
     }
 }

@@ -16,5 +16,16 @@ namespace ProjectSerialize
         {
             InitializeComponent();
         }
+
+        public static void PopulateDGV()
+        {
+            DataTable dt = new DataTable();
+            DataColumn col = new DataColumn();
+            
+
+
+        }
+
+
     }
 }
