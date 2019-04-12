@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ProjectSerialize
 {
@@ -115,7 +116,17 @@ namespace ProjectSerialize
                 persons.Add(person);
             }
 
+            string usersDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(usersDesktop + "\\Project Serialize\\Log_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt", FileMode.Create, FileAccess.Write);
+            
 
+
+            foreach (Person person in persons)
+            {
+                formatter.Serialize(stream, person);
+            }
+            stream.Close();
         }
 
         [Serializable]
@@ -134,6 +145,63 @@ namespace ProjectSerialize
                 Age = age;
             }
 
+            public void Name()
+            {
+                MessageBox.Show(this.FirstName);
+            }
+
+        }
+
+        private void ButtonDeserialize_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog fd = new OpenFileDialog())
+            {
+                string usersDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                fd.InitialDirectory = usersDesktop + "\\Project Serialize\\";
+                fd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                fd.FilterIndex = 2;
+                fd.RestoreDirectory = true;
+
+
+                if (fd.ShowDialog() == DialogResult.OK)
+                {
+
+
+                    IFormatter formatter = new BinaryFormatter();
+                    Stream stream = new FileStream(fd.FileName, FileMode.Open, FileAccess.Read);
+
+                    Person newPerson = (Person)formatter.Deserialize(stream);
+                    
+
+
+                    /*
+                    DataTable dataTable = new DataTable();
+                    DataColumn column = new DataColumn();
+                    dataTable.Columns.Add(new DataColumn("ID", typeof(int)));
+                    dataTable.Columns.Add(new DataColumn("FirstName", typeof(string)));
+                    dataTable.Columns.Add(new DataColumn("LastName", typeof(string)));
+                    dataTable.Columns.Add(new DataColumn("Age", typeof(string)));
+
+                    filePath = fd.FileName;
+
+                    var lines = File.ReadAllLines(filePath);
+                    foreach (string line in lines)
+                    {
+                        string[] curr = line.Split('\t');
+                        var row = dataTable.NewRow();
+                        row["id"] = curr[0];
+                        row["FirstName"] = curr[1];
+                        row["LastName"] = curr[2];
+                        row["Age"] = curr[3];
+                        dataTable.Rows.Add(row);
+                    }
+
+                    this.dataGridView1.Columns.Clear();
+                    this.dataGridView1.DataSource = dataTable;
+                    */
+                }
+
+            }
         }
     }
 }
