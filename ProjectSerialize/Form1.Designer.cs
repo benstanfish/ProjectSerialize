@@ -31,10 +31,11 @@
             this.ButtonSerialize = new System.Windows.Forms.Button();
             this.ButtonOpenFile = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ButtonClose = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,15 +64,26 @@
             this.id,
             this.FirstName,
             this.LastName,
-            this.DOB});
+            this.Age});
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(443, 425);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridView1_RowPostPaint);
+            // 
+            // ButtonClose
+            // 
+            this.ButtonClose.Location = new System.Drawing.Point(463, 414);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(75, 23);
+            this.ButtonClose.TabIndex = 3;
+            this.ButtonClose.Text = "Close";
+            this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
             // id
             // 
-            this.id.HeaderText = "id";
+            this.id.HeaderText = "ID";
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
@@ -85,16 +97,17 @@
             this.LastName.HeaderText = "LastName";
             this.LastName.Name = "LastName";
             // 
-            // DOB
+            // Age
             // 
-            this.DOB.HeaderText = "DOB";
-            this.DOB.Name = "DOB";
+            this.Age.HeaderText = "Age";
+            this.Age.Name = "Age";
             // 
             // FormSerialize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 450);
+            this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.ButtonOpenFile);
             this.Controls.Add(this.ButtonSerialize);
@@ -111,10 +124,11 @@
         private System.Windows.Forms.Button ButtonSerialize;
         private System.Windows.Forms.Button ButtonOpenFile;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button ButtonClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DOB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Age;
     }
 }
 

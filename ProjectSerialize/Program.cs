@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 
 
+
 namespace ProjectSerialize
 {
     static class Program
@@ -13,7 +14,20 @@ namespace ProjectSerialize
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+
+
+
+
+
+
+
+
+
+
+
+
         [STAThread]
+
         static void Main()
         {
             Application.EnableVisualStyles();
