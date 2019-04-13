@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+using System.Xml.Serialization;
+
 
 namespace ProjectSerialize
 {
@@ -41,7 +44,7 @@ namespace ProjectSerialize
             string usersDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             TextWriter writer = new StreamWriter(usersDesktop + "\\Project Serialize\\Log_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt");
 
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
@@ -117,11 +120,13 @@ namespace ProjectSerialize
             }
 
             string usersDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(usersDesktop + "\\Project Serialize\\Log_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt", FileMode.Create, FileAccess.Write);
+            Stream stream = new FileStream(usersDesktop + "\\Project Serialize\\BIN_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt", FileMode.Create, FileAccess.Write);
+
+            // IFormatter formatter = new BinaryFormatter();
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            //XmlSerializer formatter = new XmlSerializer(typeof(Person));
             
-
-
             foreach (Person person in persons)
             {
                 formatter.Serialize(stream, person);
@@ -129,7 +134,7 @@ namespace ProjectSerialize
             stream.Close();
         }
 
-        [Serializable]
+        [Serializable()]
         public class Person
         {
             int ID { get; set; }
@@ -143,11 +148,6 @@ namespace ProjectSerialize
                 FirstName = firstName;
                 LastName = lastName;
                 Age = age;
-            }
-
-            public void Name()
-            {
-                MessageBox.Show(this.FirstName);
             }
 
         }
