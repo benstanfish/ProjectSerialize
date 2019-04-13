@@ -115,39 +115,43 @@ namespace ProjectSerialize
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
 
-                Person person = new Person(1,"Ben","Fisher",8);
+                Person person = new Person();
                 persons.Add(person);
             }
 
             string usersDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            Stream stream = new FileStream(usersDesktop + "\\Project Serialize\\BIN_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt", FileMode.Create, FileAccess.Write);
+            //Stream stream = new FileStream(usersDesktop + "\\Project Serialize\\BIN_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt", FileMode.Create, FileAccess.Write);
+            string filePath = usersDesktop + "\\Project Serialize\\XML_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt";
+
 
             // IFormatter formatter = new BinaryFormatter();
-            BinaryFormatter formatter = new BinaryFormatter();
+            //BinaryFormatter formatter = new BinaryFormatter();
 
             //XmlSerializer formatter = new XmlSerializer(typeof(Person));
-            
+
             foreach (Person person in persons)
             {
-                formatter.Serialize(stream, person);
+                //formatter.Serialize(stream, person);
+                person.Save(filePath);
             }
-            stream.Close();
+            //stream.Close();
         }
 
-        [Serializable()]
+        [Serializable]
         public class Person
         {
-            int ID { get; set; }
-            string FirstName { get; set; }
-            string LastName { get; set; }
-            int Age { get; set; }
+            public int ID { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public int Age { get; set; }
 
-            public Person(int id, string firstName, string lastName, int age)
+            public void Save(string fileName)
             {
-                ID = id;
-                FirstName = firstName;
-                LastName = lastName;
-                Age = age;
+                using (FileStream stream = new FileStream(fileName,FileMode.Create,FileAccess.Write))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(Person));
+                    xml.Serialize(stream,this);
+                }
             }
 
         }
