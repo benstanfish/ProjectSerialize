@@ -207,5 +207,13 @@ namespace ProjectSerialize
 
             }
         }
+
+        private void ButtonOpenFolder_Click(object sender, EventArgs e)
+        {
+
+
+
+
+        }
     }
 }

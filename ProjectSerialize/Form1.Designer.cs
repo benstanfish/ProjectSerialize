@@ -30,14 +30,15 @@
         {
             this.ButtonRead = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ButtonClose = new System.Windows.Forms.Button();
-            this.ButtonWrite = new System.Windows.Forms.Button();
-            this.ButtonSerialize = new System.Windows.Forms.Button();
-            this.ButtonDeserialize = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ButtonClose = new System.Windows.Forms.Button();
+            this.ButtonWrite = new System.Windows.Forms.Button();
+            this.ButtonSerialize = new System.Windows.Forms.Button();
+            this.ButtonDeserialize = new System.Windows.Forms.Button();
+            this.ButtonOpenFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +65,26 @@
             this.dataGridView1.Size = new System.Drawing.Size(443, 425);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridView1_RowPostPaint);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            // 
+            // FirstName
+            // 
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.Name = "FirstName";
+            // 
+            // LastName
+            // 
+            this.LastName.HeaderText = "LastName";
+            this.LastName.Name = "LastName";
+            // 
+            // Age
+            // 
+            this.Age.HeaderText = "Age";
+            this.Age.Name = "Age";
             // 
             // ButtonClose
             // 
@@ -105,31 +126,22 @@
             this.ButtonDeserialize.UseVisualStyleBackColor = true;
             this.ButtonDeserialize.Click += new System.EventHandler(this.ButtonDeserialize_Click);
             // 
-            // id
+            // ButtonOpenFolder
             // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            // 
-            // FirstName
-            // 
-            this.FirstName.HeaderText = "FirstName";
-            this.FirstName.Name = "FirstName";
-            // 
-            // LastName
-            // 
-            this.LastName.HeaderText = "LastName";
-            this.LastName.Name = "LastName";
-            // 
-            // Age
-            // 
-            this.Age.HeaderText = "Age";
-            this.Age.Name = "Age";
+            this.ButtonOpenFolder.Location = new System.Drawing.Point(464, 130);
+            this.ButtonOpenFolder.Name = "ButtonOpenFolder";
+            this.ButtonOpenFolder.Size = new System.Drawing.Size(75, 23);
+            this.ButtonOpenFolder.TabIndex = 7;
+            this.ButtonOpenFolder.Text = "Open Folder";
+            this.ButtonOpenFolder.UseVisualStyleBackColor = true;
+            this.ButtonOpenFolder.Click += new System.EventHandler(this.ButtonOpenFolder_Click);
             // 
             // FormSerialize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 450);
+            this.Controls.Add(this.ButtonOpenFolder);
             this.Controls.Add(this.ButtonDeserialize);
             this.Controls.Add(this.ButtonSerialize);
             this.Controls.Add(this.ButtonWrite);
@@ -155,6 +167,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
+        private System.Windows.Forms.Button ButtonOpenFolder;
     }
 }
 
