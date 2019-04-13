@@ -36,7 +36,7 @@ namespace ProjectSerialize
 
         private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            this.dataGridView1.Rows[e.RowIndex].Cells["id"].Value = (e.RowIndex + 1).ToString();
+            // this.dataGridView1.Rows[e.RowIndex].Cells["id"].Value = (e.RowIndex + 1).ToString();
         }
 
         private void ButtonWrite_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace ProjectSerialize
             string usersDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             TextWriter writer = new StreamWriter(usersDesktop + "\\Project Serialize\\Log_" + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt");
 
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
             {
                 for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
