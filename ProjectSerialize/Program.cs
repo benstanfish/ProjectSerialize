@@ -24,15 +24,21 @@ namespace ProjectSerialize
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormSerialize());
 
-            AThing thing = new AThing();
-            thing.ID = 1;
-            thing.FirstName = "Ben";
-            thing.LastName = "Fisher";
-            thing.FavoriteInteger = 39;
+            
+            Random rand = new Random();
 
-            thing.SaveObject(@"C:\Users\benst\Desktop\Project Serialize\XML_Serialize");
+            for (int i = 1; i < 101; i++)
+            {
+                AThing thing = new AThing();
+                thing.ID = i;
+                thing.FirstName = RandomText.RandomString();
+                thing.LastName = RandomText.RandomString();
+                thing.FavoriteInteger = rand.Next();
 
-            AThing newThing = AThing.LoadFromFile(@"C:\Users\benst\Desktop\Project Serialize\XML_Serialize");
+                thing.SaveObject(@"C:\Users\benst\Desktop\Project Serialize\XML_Serialize");
+            }
+
+            // AThing newThing = AThing.LoadFromFile(@"C:\Users\benst\Desktop\Project Serialize\XML_Serialize");
             // MessageBox.Show(newThing.FirstName.ToString());
 
         }
@@ -51,7 +57,7 @@ namespace ProjectSerialize
 
         public void SaveObject(string fileName)
         {
-            using (FileStream stream = new FileStream(fileName, FileMode.Create))
+            using (FileStream stream = new FileStream(fileName, FileMode.Append))
             {
                 XmlSerializer xml = new XmlSerializer(typeof(AThing));
                 xml.Serialize(stream, this);
@@ -67,6 +73,17 @@ namespace ProjectSerialize
             }
         }
 
-    }
 
+
+
+    }
+    public static class RandomText
+    {
+        public static string RandomString()
+        {
+            string path = Path.GetRandomFileName();
+            path = path.Replace(".", "");
+            return path;
+        }
+    }
 }

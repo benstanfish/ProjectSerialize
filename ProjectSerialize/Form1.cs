@@ -170,7 +170,7 @@ namespace ProjectSerialize
                 if (fd.ShowDialog() == DialogResult.OK)
                 {
 
-
+                    /*
                     IFormatter formatter = new BinaryFormatter();
                     Stream stream = new FileStream(fd.FileName, FileMode.Open, FileAccess.Read);
 
@@ -178,7 +178,7 @@ namespace ProjectSerialize
                     
 
 
-                    /*
+                    
                     DataTable dataTable = new DataTable();
                     DataColumn column = new DataColumn();
                     dataTable.Columns.Add(new DataColumn("ID", typeof(int)));
