@@ -210,10 +210,8 @@ namespace ProjectSerialize
 
         private void ButtonOpenFolder_Click(object sender, EventArgs e)
         {
-
-
-
-
+            string openPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Project Serialize\\";
+            System.Diagnostics.Process.Start(openPath);
         }
     }
 }
