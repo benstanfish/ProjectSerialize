@@ -32,6 +32,9 @@ namespace ProjectSerialize
 
             thing.SaveObject(@"C:\Users\benst\Desktop\Project Serialize\XML_Serialize");
 
+            AThing newThing = AThing.LoadFromFile(@"C:\Users\benst\Desktop\Project Serialize\XML_Serialize");
+            // MessageBox.Show(newThing.FirstName.ToString());
+
         }
 
     }
@@ -39,7 +42,9 @@ namespace ProjectSerialize
     [Serializable]
     public class AThing
     {
+        [XmlAttribute]
         public int ID { get; set; }
+        [XmlElement]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int FavoriteInteger { get; set; }
@@ -53,6 +58,14 @@ namespace ProjectSerialize
             }
         }
 
+        public static AThing LoadFromFile(string fileName)
+        {
+            using (FileStream stream = new FileStream(fileName, FileMode.Open))
+            {
+                XmlSerializer xml = new XmlSerializer(typeof(AThing));
+                return (AThing)xml.Deserialize(stream);
+            }
+        }
 
     }
 
