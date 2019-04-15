@@ -24,7 +24,7 @@ namespace ProjectSerialize
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormSerialize());
 
-            
+            /*
             Random rand = new Random();
 
             for (int i = 1; i < 101; i++)
@@ -40,6 +40,28 @@ namespace ProjectSerialize
 
             // AThing newThing = AThing.LoadFromFile(@"C:\Users\benst\Desktop\Project Serialize\XML_Serialize");
             // MessageBox.Show(newThing.FirstName.ToString());
+            */
+
+            Random rand = new Random();
+            List<AThing> myThings = new List<AThing>();
+
+            for (int i = 1; i < 10; i++)
+            {
+                AThing thing = new AThing();
+                thing.ID = i;
+                thing.FirstName = RandomText.RandomString();
+                thing.LastName = RandomText.RandomString();
+                thing.FavoriteInteger = rand.Next();
+
+                myThings.Add(thing);
+            }
+
+            string fileName = @"C:\Users\benst\Desktop\Project Serialize\XML_Serialize_List";
+            using (FileStream stream = new FileStream(fileName, FileMode.Append))
+            {
+                XmlSerializer xml = new XmlSerializer(typeof(List<AThing>));
+                xml.Serialize(stream, myThings);
+            }
 
         }
 
@@ -77,6 +99,12 @@ namespace ProjectSerialize
 
 
     }
+
+    public static class SingleSerializeTest
+    {
+
+    }
+
     public static class RandomText
     {
         public static string RandomString()
