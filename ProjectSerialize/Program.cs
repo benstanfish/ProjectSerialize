@@ -43,7 +43,7 @@ namespace ProjectSerialize
             */
 
             // The next bit of code serializes a list of AThing objects
-            /*
+            
             Random rand = new Random();
             List<AThing> myThings = new List<AThing>();
 
@@ -64,9 +64,9 @@ namespace ProjectSerialize
                 XmlSerializer xml = new XmlSerializer(typeof(List<AThing>));
                 xml.Serialize(stream, myThings);
             }
-            */
+            
 
-
+            /*
             List<AThing> newThingsGroup = new List<AThing>();
             MessageBox.Show(newThingsGroup.Count.ToString());   // Verify that there is nothing in the list
 
@@ -78,12 +78,12 @@ namespace ProjectSerialize
             }
 
             MessageBox.Show(newThingsGroup.Count.ToString());   //Verify that the AThing objects have been properly deserialized
-
+            */
         }
 
     }
 
-    [Serializable]
+    // [Serializable]
     public class AThing
     {
         [XmlAttribute]
