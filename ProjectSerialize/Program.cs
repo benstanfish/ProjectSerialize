@@ -22,7 +22,9 @@ namespace ProjectSerialize
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSerialize());
+            Application.Run(new FormSerialize());                                                  
+
+            
 
             /*
             Random rand = new Random();
@@ -47,7 +49,7 @@ namespace ProjectSerialize
             Random rand = new Random();
             List<AThing> myThings = new List<AThing>();
 
-            for (int i = 1; i < 10; i++)
+            for (int i = 1; i < 11; i++)
             {
                 AThing thing = new AThing();
                 thing.ID = i;
@@ -59,12 +61,12 @@ namespace ProjectSerialize
             }
 
             string fileName = @"C:\Users\benst\Desktop\Project Serialize\XML_Serialize_List";
-            using (FileStream stream = new FileStream(fileName, FileMode.Append))
+            using (FileStream stream = new FileStream(fileName, FileMode.Create))
             {
                 XmlSerializer xml = new XmlSerializer(typeof(List<AThing>));
                 xml.Serialize(stream, myThings);
             }
-            
+
 
             /*
             List<AThing> newThingsGroup = new List<AThing>();
@@ -79,6 +81,8 @@ namespace ProjectSerialize
 
             MessageBox.Show(newThingsGroup.Count.ToString());   //Verify that the AThing objects have been properly deserialized
             */
+
+            
         }
 
     }
