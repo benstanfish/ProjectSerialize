@@ -42,6 +42,8 @@ namespace ProjectSerialize
             // MessageBox.Show(newThing.FirstName.ToString());
             */
 
+            // The next bit of code serializes a list of AThing objects
+            /*
             Random rand = new Random();
             List<AThing> myThings = new List<AThing>();
 
@@ -62,6 +64,20 @@ namespace ProjectSerialize
                 XmlSerializer xml = new XmlSerializer(typeof(List<AThing>));
                 xml.Serialize(stream, myThings);
             }
+            */
+
+
+            List<AThing> newThingsGroup = new List<AThing>();
+            MessageBox.Show(newThingsGroup.Count.ToString());   // Verify that there is nothing in the list
+
+            string fileName = @"C:\Users\benst\Desktop\Project Serialize\XML_Serialize_List";
+            using (FileStream stream = new FileStream(fileName, FileMode.Open))
+            {
+                XmlSerializer xml = new XmlSerializer(typeof(List<AThing>));
+                newThingsGroup = (List<AThing>)xml.Deserialize(stream);
+            }
+
+            MessageBox.Show(newThingsGroup.Count.ToString());   //Verify that the AThing objects have been properly deserialized
 
         }
 
