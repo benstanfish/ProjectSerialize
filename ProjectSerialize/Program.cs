@@ -22,9 +22,9 @@ namespace ProjectSerialize
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSerialize());                                                  
+            Application.Run(new FormSerialize());
 
-            
+            CreateProgramDirectory();
 
             /*
             Random rand = new Random();
@@ -45,7 +45,7 @@ namespace ProjectSerialize
             */
 
             // The next bit of code serializes a list of AThing objects
-            
+
             Random rand = new Random();
             List<AThing> myThings = new List<AThing>();
 
@@ -60,8 +60,9 @@ namespace ProjectSerialize
                 myThings.Add(thing);
             }
 
-            string fileName = @"C:\Users\benst\Desktop\Project Serialize\XML_Serialize_List";
-            using (FileStream stream = new FileStream(fileName, FileMode.Create))
+            string usersDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string fileName = usersDesktop + @"\Project Serialize\XML_Serialize_List";
+            using (FileStream stream = new FileStream(fileName, FileMode.OpenOrCreate))
             {
                 XmlSerializer xml = new XmlSerializer(typeof(List<AThing>));
                 xml.Serialize(stream, myThings);
@@ -85,9 +86,21 @@ namespace ProjectSerialize
             
         }
 
+
+        // Utility Methods
+        public static void CreateProgramDirectory()
+        {
+            string projectDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Project Serialize\";
+            Directory.CreateDirectory(projectDirectory);
+        }
+
+
     }
 
-    // [Serializable]
+
+
+
+    // [Serializable]   // This directive is only required for non-XML serialization
     public class AThing
     {
         [XmlAttribute]
@@ -115,16 +128,7 @@ namespace ProjectSerialize
             }
         }
 
-
-
-
     }
-
-    public static class SingleSerializeTest
-    {
-
-    }
-
     public static class RandomText
     {
         public static string RandomString()

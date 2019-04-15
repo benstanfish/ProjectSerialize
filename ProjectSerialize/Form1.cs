@@ -20,13 +20,10 @@ namespace ProjectSerialize
     public partial class FormSerialize : Form
     {
 
-
         public FormSerialize()
         {
             InitializeComponent();
 
-            string projectDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+ "\\Project Serialize\\";
-            Directory.CreateDirectory(projectDirectory);
         }
 
         private void ButtonClose_Click(object sender, EventArgs e)
